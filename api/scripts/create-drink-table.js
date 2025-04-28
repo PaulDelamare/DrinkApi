@@ -8,7 +8,7 @@ async function createDrinkTable() {
         console.log('Creating drinks table...');
 
         // MySQL uses ENUM for restricting values instead of CHECK constraints
-        await db.execute(`)
+        await db.execute(`
             CREATE TABLE IF NOT EXISTS drinks (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 name VARCHAR(100) NOT NULL,
@@ -21,7 +21,7 @@ async function createDrinkTable() {
         console.error('Error creating drinks table:', error);
         throw error;
     } finally {
-        await connection.end();
+        await db.end();
     }
 }
 
