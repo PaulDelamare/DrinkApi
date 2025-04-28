@@ -25,8 +25,8 @@ exports.createDrink = async (req, res) => {
     try {
         const { name, type } = req.body;
 
-        if (type !== 'gazeux' && type !== 'plate') {
-            return res.status(400).json({ message: 'Type must be either "gazeux" or "plate"' });
+        if (type !== 'gazeux' && type !== 'plat') {
+            return res.status(400).json({ message: 'Type must be either "gazeux" or "plat"' });
         }
 
         const [result] = await db.query('INSERT INTO drinks (name, type) VALUES (?, ?)', [name, type]);
@@ -42,8 +42,8 @@ exports.updateDrink = async (req, res) => {
     try {
         const { name, type } = req.body;
 
-        if (type && type !== 'gazeux' && type !== 'plate') {
-            return res.status(400).json({ message: 'Type must be either "gazeux" or "plate"' });
+        if (type && type !== 'gazeux' && type !== 'plat') {
+            return res.status(400).json({ message: 'Type must be either "gazeux" or "plat"' });
         }
 
         const [existingDrink] = await db.query('SELECT * FROM drinks WHERE id = ?', [req.params.id]);
