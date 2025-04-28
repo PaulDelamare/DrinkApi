@@ -4,6 +4,8 @@ const { db } = require('./config/api-config');
 const app = express();
 const port = 3000;
 
+const drinkRoutes = require('./routes/drink.routes');
+
 
 db.connect((err) => {
   if (err) throw err;
@@ -30,6 +32,8 @@ app.post('/users', (req, res) => {
     res.status(201).send('User added');
   });
 });
+
+app.use('/drink', drinkRoutes);
 
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server running on port ${port}`);
