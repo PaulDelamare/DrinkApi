@@ -1,15 +1,9 @@
 
 const express = require('express');
-const mysql = require('mysql2');
+const { db } = require('./config/api-config');
 const app = express();
 const port = 3000;
 
-const db = mysql.createConnection({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASS || 'root',
-  database: process.env.DB_NAME || 'appdb'
-});
 
 db.connect((err) => {
   if (err) throw err;
