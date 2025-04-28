@@ -1,5 +1,5 @@
 
-FROM node:18
+FROM node:20-alpine
 
 WORKDIR /usr/src/app
 
@@ -11,4 +11,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["/bin/sh", "-c", "npm run create:drink:table && npm start"]
